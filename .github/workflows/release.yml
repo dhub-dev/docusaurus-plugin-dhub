@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      # Required for npm trusted publishing (OIDC) — no NPM_TOKEN needed.
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+          cache: npm
+
+      # setup-node ships npm 10.x; trusted publishing needs >= 11.5.1.
+      - name: Upgrade npm
+        run: npm install -g npm@^11.15.0
+
+      - name: Check package.json version matches the release tag
+        run: |
+          tag="${{ github.event.release.tag_name }}"
+          tag="${tag#v}"
+          pkg=$(node -p "require('./package.json').version")
+          if [ "$tag" != "$pkg" ]; then
+            echo "Release tag ($tag) does not match package.json version ($pkg)." >&2
+            exit 1
+          fi
+          echo "Publishing $pkg"
+
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+      - run: npm run test:integration
+
+      # Provenance is attached automatically when publishing via OIDC.
+      - run: npm publish
