@@ -1,6 +1,6 @@
 # docusaurus-plugin-dhub
 
-Docusaurus integration for [Dhub](https://dhub.dev) — a visual editor for Docusaurus sites.
+Docusaurus integration for [Dhub](https://dhub.dev/docusaurus) — a visual editor for Docusaurus sites.
 
 The plugin does two things:
 
@@ -10,7 +10,7 @@ The plugin does two things:
 ## Requirements
 
 - Docusaurus **3.5 or later** with the classic theme (`@docusaurus/preset-classic` or `@docusaurus/theme-classic`).
-- A [Dhub](https://dhub.dev) project connected to your site's repository.
+- A [Dhub](https://dhub.dev/docusaurus) project connected to your site's repository.
 
 ## Installation
 
