@@ -1,6 +1,6 @@
 {
   "name": "docusaurus-plugin-dhub",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Docusaurus plugin for Dhub (dhub.dev): adds \"Edit in Dhub\" links to docs and blog pages and emits a dhub.json route-to-source manifest.",
   "license": "MIT",
   "repository": {
