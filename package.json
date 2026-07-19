@@ -1,0 +1,57 @@
+{
+  "name": "docusaurus-plugin-dhub",
+  "version": "0.1.0",
+  "description": "Docusaurus plugin for Dhub (dhub.dev): adds \"Edit in Dhub\" links to docs and blog pages and emits a dhub.json route-to-source manifest.",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "src",
+    "!src/__tests__",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rm -rf lib && tsc -p tsconfig.client.json && tsc -p tsconfig.json && node scripts/copy-assets.mjs",
+    "test": "vitest run --project unit",
+    "test:integration": "vitest run --project integration",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.client.json --noEmit",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "workspaces": [
+    "fixture"
+  ],
+  "keywords": [
+    "docusaurus",
+    "docusaurus-plugin",
+    "dhub",
+    "cms",
+    "visual-editor",
+    "mdx"
+  ],
+  "dependencies": {
+    "@docusaurus/utils-validation": "^3.5.0"
+  },
+  "peerDependencies": {
+    "@docusaurus/core": ">=3.5.0 <4",
+    "@docusaurus/plugin-content-blog": ">=3.5.0 <4",
+    "@docusaurus/plugin-content-docs": ">=3.5.0 <4",
+    "@docusaurus/theme-classic": ">=3.5.0 <4",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@docusaurus/plugin-content-blog": "3.10.2",
+    "@docusaurus/plugin-content-docs": "3.10.2",
+    "@docusaurus/theme-classic": "3.10.2",
+    "@docusaurus/types": "3.10.2",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^4.1.0"
+  },
+  "engines": {
+    "node": ">=18.0"
+  }
+}

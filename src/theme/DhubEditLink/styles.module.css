@@ -1,0 +1,9 @@
+/* Separation from the theme's own edit link in `alongside` mode. */
+.spaced {
+  margin-left: 1rem;
+}
+
+/* Standalone row, used when the theme renders no edit-link slot of its own. */
+.dhubEditRow {
+  margin-top: 0.5rem;
+}

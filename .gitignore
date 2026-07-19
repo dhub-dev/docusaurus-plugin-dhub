@@ -1,0 +1,7 @@
+node_modules/
+lib/
+*.tgz
+fixture/build/
+fixture/.docusaurus/
+tests/integration/.dev-server.log
+fixture/build-alongside/
